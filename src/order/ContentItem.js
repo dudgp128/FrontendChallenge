@@ -9,7 +9,6 @@ const ItemContainer = styled.div`
   height: 80px;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  background: rgba(247, 90, 47, 0.1);
   padding: 9px 12px;
   box-sizing: border-box;
   display: flex;
@@ -19,6 +18,10 @@ const ItemContainer = styled.div`
     height: 100%;
     aspect-ratio: 1/1;
     background: #d9d9d9;
+  }
+
+  &.active {
+    background: rgba(247, 90, 47, 0.1);
   }
 `;
 
@@ -55,7 +58,7 @@ const InfoContainer = styled.div`
   }
 `;
 
-const ContentItem = ({ key, name, event, price }) => {
+const ContentItem = ({ name, event, price }) => {
   const [count, setCount] = useState(0);
 
   const allCount = useSelector((state) => state.item.count);
@@ -88,7 +91,7 @@ const ContentItem = ({ key, name, event, price }) => {
   };
 
   return (
-    <ItemContainer>
+    <ItemContainer className={` ${count > 0 && "active"}`}>
       <div className="imgWrapper" />
       <InfoContainer>
         <Title name={name} event={event} />
