@@ -44,12 +44,26 @@ const InfoContainer = styled.div`
         display: flex;
         width: 18px;
         height: 18px;
+
+        &:nth-child(odd) {
+          cursor: pointer;
+        }
       }
     }
   }
 `;
 const ContentItem = ({ key, name, event, price }) => {
   const [count, setCount] = useState(0);
+
+  const calcCount = (e) => {
+    const { innerText } = e.target;
+    const operatorList = {
+      "-": () => (count > 0 ? setCount(count - 1) : null),
+      "+": () => setCount(count + 1),
+    };
+
+    operatorList[innerText]();
+  };
 
   return (
     <ItemContainer>
@@ -58,9 +72,9 @@ const ContentItem = ({ key, name, event, price }) => {
         <Title name={name} event={event} />
         <div className="bottom">
           <div className="counterBox">
-            <span>-</span>
+            <span onClick={calcCount}>-</span>
             <span>{count}</span>
-            <span>+</span>
+            <span onClick={calcCount}>+</span>
           </div>
           <div>{price}원</div>
         </div>
