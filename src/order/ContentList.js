@@ -10,17 +10,36 @@ const FlexList = styled.div`
   padding-left: 25px;
 `;
 const ContentList = () => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState();
+
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const { data } = await axios.get("http://localhost:3001/items");
-        console.log(data);
+        setItems(data);
       } catch (error) {}
+      setLoading(false);
     };
     fetchData();
   }, []);
 
-  return <FlexList></FlexList>;
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <>
+      {items.length && (
+        <FlexList>
+          {items.map(({ id, name }) => (
+            <div key={id}>{name}</div>
+          ))}
+        </FlexList>
+      )}
+    </>
+  );
 };
 
 export default ContentList;
