@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Logo } from "../common/Logo";
 import LowerBox from "./LowerBox";
+import ContentList from "./ContentList";
 
 const Container = styled.div`
   width: 350px;
@@ -29,7 +30,9 @@ const OrderPage = () => {
       <div className="upper">
         <Logo width={"94.11"} />
       </div>
-      <div className="content" />
+      <div className="content">
+        <ContentList />
+      </div>
       <LowerBox />
     </Container>
   );
