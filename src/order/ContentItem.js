@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const ItemContainer = styled.div`
@@ -7,8 +8,27 @@ const ItemContainer = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.3);
   background: rgba(247, 90, 47, 0.1);
 `;
-const ContentItem = () => {
-  return <ItemContainer>ContentItem</ItemContainer>;
+const ContentItem = ({ key, name, event, price }) => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <ItemContainer>
+      <div className="imgWrapper" />
+      <div>
+        <div>
+          <div>{name}</div>
+          <div>{event}</div>
+        </div>
+        <div>
+          <div>-</div>
+          <div>{count}</div>
+          <div>+</div>
+        </div>
+        <div>{price}원</div>
+      </div>
+      <div></div>
+    </ItemContainer>
+  );
 };
 
 export default ContentItem;

@@ -22,6 +22,7 @@ const Container = styled.div`
   & > .content {
     width: 100%;
     height: calc(100vh - 57px - 170px); // 전체 화면 - 상단 - 하단
+    overflow-y: scroll;
   }
 `;
 const OrderPage = () => {

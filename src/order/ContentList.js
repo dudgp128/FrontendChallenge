@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ContentItem from "./ContentItem";
 
 const FlexList = styled.div`
   display: flex;
@@ -33,8 +34,14 @@ const ContentList = () => {
     <>
       {items.length && (
         <FlexList>
-          {items.map(({ id, name }) => (
-            <div key={id}>{name}</div>
+          {items.map(({ id, name, event, materialType, price }) => (
+            <ContentItem
+              key={id}
+              name={name}
+              event={event}
+              materialType={materialType}
+              price={price}
+            />
           ))}
         </FlexList>
       )}
