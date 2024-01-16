@@ -9,6 +9,20 @@ const FlexList = styled.div`
   gap: 18px;
   padding-right: 24px;
   padding-left: 25px;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%;
+
+  & > .loadingBox {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 `;
 const ContentList = () => {
   const [items, setItems] = useState([]);
@@ -27,7 +41,14 @@ const ContentList = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <FlexList>
+        <div className="loadingBox">
+          목록을 <br />
+          불러오고 있습니다.
+        </div>
+      </FlexList>
+    );
   }
 
   return (
