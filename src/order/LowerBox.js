@@ -42,6 +42,13 @@ const Wrapper = styled.div`
       line-height: normal;
     }
   }
+
+  & > .active {
+    background: #000;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 const LowerBox = () => {
@@ -54,7 +61,7 @@ const LowerBox = () => {
         <div> 총 수량 : {allCount}개</div>
         <div> 총 가격 : {allPrice}원 </div>
       </div>
-      <div className="buttonBox">
+      <div className={`buttonBox${allCount ? " active" : ""}`}>
         <div>주문하기</div>
       </div>
     </Wrapper>
