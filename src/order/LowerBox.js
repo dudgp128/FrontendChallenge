@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -42,12 +43,16 @@ const Wrapper = styled.div`
     }
   }
 `;
+
 const LowerBox = () => {
+  const allCount = useSelector((state) => state.item.count);
+  const allPrice = useSelector((state) => state.item.price);
+
   return (
     <Wrapper>
       <div className="textBox">
-        <div> 총 수량 : {0}개</div>
-        <div> 총 가격 : {0}원 </div>
+        <div> 총 수량 : {allCount}개</div>
+        <div> 총 가격 : {allPrice}원 </div>
       </div>
       <div className="buttonBox">
         <div>주문하기</div>

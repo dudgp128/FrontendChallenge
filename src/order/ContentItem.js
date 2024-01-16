@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Title } from "./Title";
+import { useDispatch, useSelector } from "react-redux";
+import { changeField } from "../module/items";
 
 const ItemContainer = styled.div`
   width: 100%;
@@ -52,14 +54,34 @@ const InfoContainer = styled.div`
     }
   }
 `;
+
 const ContentItem = ({ key, name, event, price }) => {
   const [count, setCount] = useState(0);
+
+  const allCount = useSelector((state) => state.item.count);
+  const allPrice = useSelector((state) => state.item.price);
+
+  const dispatch = useDispatch();
 
   const calcCount = (e) => {
     const { innerText } = e.target;
     const operatorList = {
-      "-": () => (count > 0 ? setCount(count - 1) : null),
-      "+": () => setCount(count + 1),
+      "-": () => {
+        if (count > 0) {
+          setCount(count - 1);
+          dispatch(
+            changeField({ count: allCount - 1, price: allPrice - price })
+          );
+        }
+      },
+      "+": () => {
+        if (count < 999) {
+          setCount(count + 1);
+          dispatch(
+            changeField({ count: allCount + 1, price: allPrice + price })
+          );
+        }
+      },
     };
 
     operatorList[innerText]();
