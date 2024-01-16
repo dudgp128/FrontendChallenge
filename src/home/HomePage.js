@@ -51,7 +51,7 @@ const HomePage = () => {
   return (
     <Container>
       <div>
-        <Logo />
+        <Logo width={150} />
       </div>
       <div>
         <div className="gotoOrder" onClick={onClick}>
