@@ -60,14 +60,16 @@ const LowerBox = () => {
   const totalPrice = useSelector((state) => state.order.totalPrice);
 
   const navigate = useNavigate();
-  const onClick = (e) => {
+
+  const onClick = async (e) => {
     setText("로딩중...");
     e.target.className = "buttonBox";
 
-    const { status } = simulateOrder();
-    if (status === 200) {
+    // 주문하기
+    try {
+      await simulateOrder();
       navigate("/complete");
-    } else {
+    } catch (error) {
       navigate("/error");
     }
   };
