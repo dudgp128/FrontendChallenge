@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Title } from "./Title";
 import { useDispatch, useSelector } from "react-redux";
-import { changeField } from "../module/items";
+import { changeField } from "../module/order";
 
 const ItemContainer = styled.div`
   width: 100%;
@@ -61,8 +61,8 @@ const InfoContainer = styled.div`
 const ContentItem = ({ name, event, price }) => {
   const [count, setCount] = useState(0);
 
-  const allCount = useSelector((state) => state.item.count);
-  const allPrice = useSelector((state) => state.item.price);
+  const allCount = useSelector((state) => state.order.count);
+  const allPrice = useSelector((state) => state.order.price);
 
   const dispatch = useDispatch();
 

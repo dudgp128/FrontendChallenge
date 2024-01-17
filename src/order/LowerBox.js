@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -52,8 +54,8 @@ const Wrapper = styled.div`
 `;
 
 const LowerBox = () => {
-  const allCount = useSelector((state) => state.item.count);
-  const allPrice = useSelector((state) => state.item.price);
+  const allCount = useSelector((state) => state.order.count);
+  const allPrice = useSelector((state) => state.order.price);
 
   return (
     <Wrapper>

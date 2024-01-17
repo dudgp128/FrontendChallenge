@@ -6,12 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import itemSlice from "./module/items";
+import orderSlice from "./module/order";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore({
   reducer: {
-    item: itemSlice.reducer,
+    order: orderSlice.reducer,
   },
   devTools: true,
 });
