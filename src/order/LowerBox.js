@@ -1,3 +1,4 @@
+// OrderPage 하단의 { 총 금액, 총 갯수, 주문하기 } 주문 박스
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";

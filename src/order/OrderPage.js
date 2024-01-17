@@ -1,3 +1,4 @@
+// 주문 페이지 (/order)
 import styled from "styled-components";
 import { Logo } from "../common/Logo";
 import LowerBox from "./LowerBox";

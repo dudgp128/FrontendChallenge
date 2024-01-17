@@ -1,3 +1,4 @@
+// 주문 성공 페이지 (/complete)
 import Check from "../common/Check";
 import { PageContainer } from "../common/PageContainer";
 import { useDelayedNavigation } from "./useDelayedNavigation";

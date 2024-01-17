@@ -1,3 +1,4 @@
+// [ HomePage 중앙, OrderPage 상단바 ] 에서 사용하는 icon
 export const Logo = ({ width }) => {
   return (
     <svg

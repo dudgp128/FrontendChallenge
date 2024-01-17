@@ -1,3 +1,4 @@
+// ContentList, ContentItem을 이루는 ContentItem
 import { useState } from "react";
 import styled from "styled-components";
 import { Title } from "./Title";

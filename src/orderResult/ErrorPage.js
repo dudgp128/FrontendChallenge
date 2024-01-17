@@ -1,3 +1,4 @@
+// 주문 실패 페이지 (/error)
 import { PageContainer } from "../common/PageContainer";
 import { useDelayedNavigation } from "./useDelayedNavigation";
 

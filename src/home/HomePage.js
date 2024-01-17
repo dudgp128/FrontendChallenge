@@ -1,3 +1,4 @@
+// 홈페이지 (/)
 import styled from "styled-components";
 import { Logo } from "../common/Logo";
 import { useNavigate } from "react-router-dom";

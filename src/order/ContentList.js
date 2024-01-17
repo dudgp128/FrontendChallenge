@@ -1,3 +1,4 @@
+// 제품 정보를 나타내는 수직(row) 리스트
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";

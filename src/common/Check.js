@@ -1,5 +1,4 @@
-import React from "react";
-
+// 주문 완료시, 상단 체트 icon
 const Check = () => {
   return (
     <svg
