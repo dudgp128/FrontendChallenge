@@ -1,6 +1,3 @@
 [submodule "my-app"]
 	path = my-app
 	url = https://github.com/dudgp128/my-app.git
-[submodule "FrontendChallenge"]
-	path = FrontendChallenge
-	url = https://github.com/dudgp128/FrontendChallenge.git
