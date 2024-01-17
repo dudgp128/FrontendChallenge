@@ -3,9 +3,8 @@ import { Logo } from "../common/Logo";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
-  width: 350px;
-  height: 100vh;
   background: #000;
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./home/HomePage";
 import OrderPage from "./order/OrderPage";
+import "./App.css";
 
 const App = () => {
   return (

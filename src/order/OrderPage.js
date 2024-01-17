@@ -7,8 +7,6 @@ import { initialized } from "../module/order";
 import { useDispatch } from "react-redux";
 
 const Container = styled.div`
-  width: 350px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
