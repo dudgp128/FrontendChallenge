@@ -41,8 +41,8 @@ const orderSlice = createSlice({
       state.totalCount -= 1;
       state.totalPrice -= item.price;
     },
-    initialized: (state) => {
-      state = initialState;
+    initialized: () => {
+      return initialState;
     },
   },
 });
