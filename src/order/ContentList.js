@@ -4,15 +4,14 @@ import axios from "axios";
 import ContentItem from "./ContentItem";
 
 const FlexList = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
+  padding: 18px 24.5px;
   gap: 18px;
-  padding-right: 24px;
-  padding-left: 25px;
   width: 100%;
   justify-content: center;
   box-sizing: border-box;
-  height: 100%;
 
   & > .loadingBox {
     color: #000;
