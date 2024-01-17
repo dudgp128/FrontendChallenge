@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Logo } from "../common/Logo";
 import LowerBox from "./LowerBox";
 import ContentList from "./ContentList";
+import { useEffect } from "react";
+import { initialized } from "../module/order";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div`
   width: 350px;
@@ -26,6 +29,13 @@ const Container = styled.div`
   }
 `;
 const OrderPage = () => {
+  const dispatch = useDispatch();
+
+  // 새로 렌더링될때, order redux 초기화하기
+  useEffect(() => {
+    dispatch(initialized());
+  }, []);
+
   return (
     <Container>
       <div className="upper">
