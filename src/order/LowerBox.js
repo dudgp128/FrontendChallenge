@@ -61,7 +61,7 @@ const LowerBox = () => {
     <Wrapper>
       <div className="textBox">
         <div> 총 수량 : {totalCount}개</div>
-        <div> 총 가격 : {totalPrice}원 </div>
+        <div> 총 가격 : {totalPrice.toLocaleString("en-US")}원 </div>
       </div>
       <div className={`buttonBox${totalCount ? " active" : ""}`}>
         <div>주문하기</div>

@@ -103,7 +103,7 @@ const ContentItem = ({ item }) => {
             <span>{count}</span>
             <span onClick={calcCount}>+</span>
           </div>
-          <div>{price}원</div>
+          <div>{price.toLocaleString("en-US")}원</div>
         </div>
       </InfoContainer>
     </ItemContainer>
