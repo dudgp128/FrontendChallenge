@@ -21,10 +21,6 @@ const Wrapper = styled.div`
     text-align: right;
     color: #000;
     font-family: Inter;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
   }
 
   & > .buttonBox {
@@ -38,11 +34,6 @@ const Wrapper = styled.div`
 
       color: #fff;
       text-align: center;
-      font-family: Inter;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
     }
   }
 

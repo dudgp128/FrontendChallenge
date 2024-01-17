@@ -4,6 +4,8 @@ import OrderPage from "./order/OrderPage";
 import "./App.css";
 import CompletePage from "./orderResult/CompletePage";
 import ErrorPage from "./orderResult/ErrorPage";
+import "@fontsource/roboto";
+import "@fontsource/inter";
 
 const App = () => {
   return (

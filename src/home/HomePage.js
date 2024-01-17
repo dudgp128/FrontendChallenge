@@ -27,11 +27,7 @@ const Container = styled.div`
 
       color: #000;
       text-align: center;
-      font-family: Inter;
       font-size: 25px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
       background-color: #fff;
 
       &:hover {

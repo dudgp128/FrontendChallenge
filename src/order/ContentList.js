@@ -16,11 +16,6 @@ const FlexList = styled.div`
   & > .loadingBox {
     color: #000;
     text-align: center;
-    font-family: Inter;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
   }
 `;
 const ContentList = () => {

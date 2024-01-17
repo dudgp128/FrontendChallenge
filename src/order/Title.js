@@ -15,11 +15,8 @@ const TitleBox = styled.div`
     & > span {
       color: #fff;
       text-align: center;
-
       font-family: Roboto;
       font-size: 13px;
-      font-style: normal;
-      font-weight: 400;
     }
   }
 `;
