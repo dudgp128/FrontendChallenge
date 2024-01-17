@@ -1,6 +1,9 @@
 import { PageContainer } from "../common/PageContainer";
+import { useDelayedNavigation } from "./useDelayedNavigation";
 
 const ErrorPage = () => {
+  useDelayedNavigation("/order", 3000);
+
   return (
     <PageContainer>
       <div>
