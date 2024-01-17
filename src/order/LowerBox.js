@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { simulateOrder } from "./simulateOrder";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -54,8 +55,22 @@ const Wrapper = styled.div`
 `;
 
 const LowerBox = () => {
+  const [text, setText] = useState("주문하기");
   const totalCount = useSelector((state) => state.order.totalCount);
   const totalPrice = useSelector((state) => state.order.totalPrice);
+
+  const navigate = useNavigate();
+  const onClick = (e) => {
+    setText("로딩중...");
+    e.target.className = "buttonBox";
+
+    const { status } = simulateOrder();
+    if (status === 200) {
+      navigate("/complete");
+    } else {
+      navigate("/error");
+    }
+  };
 
   return (
     <Wrapper>
@@ -63,8 +78,11 @@ const LowerBox = () => {
         <div> 총 수량 : {totalCount}개</div>
         <div> 총 가격 : {totalPrice.toLocaleString("en-US")}원 </div>
       </div>
-      <div className={`buttonBox${totalCount ? " active" : ""}`}>
-        <div>주문하기</div>
+      <div
+        className={`buttonBox${totalCount ? " active" : ""}`}
+        onClick={onClick}
+      >
+        <div>{text}</div>
       </div>
     </Wrapper>
   );
