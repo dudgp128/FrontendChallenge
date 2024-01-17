@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Title } from "./Title";
-import { useDispatch, useSelector } from "react-redux";
-import { changeField } from "../module/order";
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../module/order";
 
 const ItemContainer = styled.div`
   width: 100%;
@@ -58,11 +58,9 @@ const InfoContainer = styled.div`
   }
 `;
 
-const ContentItem = ({ name, event, price }) => {
+const ContentItem = ({ item }) => {
   const [count, setCount] = useState(0);
-
-  const allCount = useSelector((state) => state.order.count);
-  const allPrice = useSelector((state) => state.order.price);
+  const { name, price, event } = item;
 
   const dispatch = useDispatch();
 
@@ -73,7 +71,9 @@ const ContentItem = ({ name, event, price }) => {
         if (count > 0) {
           setCount(count - 1);
           dispatch(
-            changeField({ count: allCount - 1, price: allPrice - price })
+            removeItem({
+              item: item,
+            })
           );
         }
       },
@@ -81,7 +81,9 @@ const ContentItem = ({ name, event, price }) => {
         if (count < 999) {
           setCount(count + 1);
           dispatch(
-            changeField({ count: allCount + 1, price: allPrice + price })
+            addItem({
+              item: item,
+            })
           );
         }
       },

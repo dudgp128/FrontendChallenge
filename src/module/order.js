@@ -2,17 +2,44 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  count: 0,
-  price: 0,
+  items: [],
+  totalCount: 0,
+  totalPrice: 0,
 };
 
 const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
-    changeField: (state, { payload: { count, price } }) => {
-      state.count = count;
-      state.price = price;
+    addItem: (state, { payload: { item } }) => {
+      const itemIndex = state.items.findIndex(
+        (ordered) => ordered.id === item.id
+      );
+
+      if (itemIndex !== -1) {
+        state.items[itemIndex].quantity += 1;
+      } else {
+        state.items = [...state.items, { ...item, quantity: 1 }];
+      }
+
+      state.totalCount += 1;
+      state.totalPrice += item.price;
+    },
+    removeItem: (state, { payload: { item } }) => {
+      const itemIndex = state.items.findIndex(
+        (ordered) => ordered.id === item.id
+      );
+
+      if (itemIndex !== -1) {
+        if (state.items[itemIndex].quantity === 1) {
+          state.items.splice(itemIndex, 1);
+        } else {
+          state.items[itemIndex].quantity -= 1;
+        }
+      }
+
+      state.totalCount -= 1;
+      state.totalPrice -= item.price;
     },
     initialized: (state) => {
       state = initialState;
@@ -21,4 +48,4 @@ const orderSlice = createSlice({
 });
 
 export default orderSlice;
-export const { changeField } = orderSlice.actions;
+export const { addItem, removeItem, initialized } = orderSlice.actions;

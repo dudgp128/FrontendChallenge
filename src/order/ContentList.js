@@ -55,14 +55,8 @@ const ContentList = () => {
     <>
       {items.length && (
         <FlexList>
-          {items.map(({ id, name, event, materialType, price }) => (
-            <ContentItem
-              key={id}
-              name={name}
-              event={event}
-              materialType={materialType}
-              price={price}
-            />
+          {items.map((item) => (
+            <ContentItem key={item.id} item={item} />
           ))}
         </FlexList>
       )}
