@@ -28,20 +28,22 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     height: 47.919px;
-    background: #c1c1c1;
+    background: #000;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      background: #c1c1c1;
+      cursor: auto;
+    }
 
     & > div {
       align-self: center;
-
       color: #fff;
       text-align: center;
-    }
-  }
-
-  & > .active {
-    background: #000;
-    &:hover {
-      cursor: pointer;
     }
   }
 `;
@@ -66,18 +68,21 @@ const LowerBox = () => {
     }
   };
 
+  const isButtonDisabled = text === "로딩중..." || totalCount === 0;
+
   return (
     <Wrapper>
       <div className="textBox">
         <div> 총 수량 : {totalCount}개</div>
         <div> 총 가격 : {totalPrice.toLocaleString("en-US")}원 </div>
       </div>
-      <div
+      <button
         className={`buttonBox${totalCount ? " active" : ""}`}
         onClick={onClick}
+        disabled={isButtonDisabled}
       >
         <div>{text}</div>
-      </div>
+      </button>
     </Wrapper>
   );
 };
