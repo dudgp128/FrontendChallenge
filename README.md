@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# 주문 시스템 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 React를 사용하여 모바일 웹에서 동작하는 주문 시스템을 구현한 것입니다.
 
-## Available Scripts
+전역 상태 관리 : Redux-toolkit  |  스타일링 : styled-components  |  HTTP 클라이언트 : axios
 
-In the project directory, you can run:
+## /order
 
-### `npm start`
+- `display: flex , justify-contents : space-between` 상단 로고와, 총 가격 및 주문하기 버튼을 고정했습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 주문 아이템은 페이지 진입 시 로딩되며, useState로 관리했습니다. 
+`const [loading, setLoading] = useState();`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Counter를 사용하여 주문 아이템의 개수를 조작하며 { 주문한 아이템들의 정보, 총 수량 , 총 가격 } 을 전역 상태로 관리했습니다. 
 
-### `npm test`
+```
+order: {
+  items: [],  // 주문한 아이템들의 정보
+  totalCount: 0, // 총 수량
+  totalPrice: 0, // 총 가격
+};
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 주문 아이템의 합계 수량이 0일 때 button 속성 disabled로 설정하였습니다.
 
-### `npm run build`
+- 주문하기 버튼의 text를 useState로 관리하며 클릭 후 setText('로딩 중')으로 상태를 변경했습니다.  
+`const [text, setText] = useState('주문하기')`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### simulateOrder()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 주문을 하는 시뮬레이션 함수 : Math.random으로 주문 성공(1)/실패(0)를 정하고, 1초 후 결과를 반환합니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## /complete, /error
 
-### `npm run eject`
+주문이 성공하면 /complete, 주문이 실패하면 /error 페이지가 노출됩니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### useDelayedNavigation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 일정 시간 이후, 라우터를 이동하는 커스텀 훅 : useDelayedNavigation(path, delay)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `useDelayedNavigation('/order', 3)` 주문 결과 페이지에서 3초 뒤에 자동으로 /order 페이지로 돌아갑니다.
