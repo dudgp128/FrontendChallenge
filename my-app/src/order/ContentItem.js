@@ -67,30 +67,22 @@ const ContentItem = ({ item }) => {
 
   const calcCount = (e) => {
     const { innerText } = e.target;
-    const operatorList = {
-      "-": () => {
-        if (count > 0) {
-          setCount(count - 1);
-          dispatch(
-            removeItem({
-              item: item,
-            })
-          );
-        }
-      },
-      "+": () => {
-        if (count < 999) {
-          setCount(count + 1);
-          dispatch(
-            addItem({
-              item: item,
-            })
-          );
-        }
-      },
-    };
 
-    operatorList[innerText]();
+    if (innerText === "+" && count < 999) {
+      setCount(count + 1);
+      dispatch(
+        addItem({
+          item: item,
+        })
+      );
+    } else if (innerText === "-" && count > 0) {
+      setCount(count - 1);
+      dispatch(
+        removeItem({
+          item: item,
+        })
+      );
+    }
   };
 
   return (
