@@ -5,6 +5,52 @@ import { Title } from "./Title";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../module/order";
 
+const ContentItem = ({ item }) => {
+  const [count, setCount] = useState(0);
+  const { name, price, event } = item;
+
+  const dispatch = useDispatch();
+
+  const calcCount = (e) => {
+    const { innerText } = e.target;
+
+    if (innerText === "+" && count < 999) {
+      setCount(count + 1);
+      dispatch(
+        addItem({
+          item: item,
+        })
+      );
+    } else if (innerText === "-" && count > 0) {
+      setCount(count - 1);
+      dispatch(
+        removeItem({
+          item: item,
+        })
+      );
+    }
+  };
+
+  return (
+    <ItemContainer className={` ${count > 0 && "active"}`}>
+      <div className="imgWrapper" />
+      <InfoContainer>
+        <Title name={name} event={event} />
+        <div className="bottom">
+          <div className="counterBox">
+            <span onClick={calcCount}>-</span>
+            <span>{count}</span>
+            <span onClick={calcCount}>+</span>
+          </div>
+          <div>{price.toLocaleString("en-US")}원</div>
+        </div>
+      </InfoContainer>
+    </ItemContainer>
+  );
+};
+
+export default ContentItem;
+
 const ItemContainer = styled.div`
   width: 100%;
   height: 80px;
@@ -58,49 +104,3 @@ const InfoContainer = styled.div`
     }
   }
 `;
-
-const ContentItem = ({ item }) => {
-  const [count, setCount] = useState(0);
-  const { name, price, event } = item;
-
-  const dispatch = useDispatch();
-
-  const calcCount = (e) => {
-    const { innerText } = e.target;
-
-    if (innerText === "+" && count < 999) {
-      setCount(count + 1);
-      dispatch(
-        addItem({
-          item: item,
-        })
-      );
-    } else if (innerText === "-" && count > 0) {
-      setCount(count - 1);
-      dispatch(
-        removeItem({
-          item: item,
-        })
-      );
-    }
-  };
-
-  return (
-    <ItemContainer className={` ${count > 0 && "active"}`}>
-      <div className="imgWrapper" />
-      <InfoContainer>
-        <Title name={name} event={event} />
-        <div className="bottom">
-          <div className="counterBox">
-            <span onClick={calcCount}>-</span>
-            <span>{count}</span>
-            <span onClick={calcCount}>+</span>
-          </div>
-          <div>{price.toLocaleString("en-US")}원</div>
-        </div>
-      </InfoContainer>
-    </ItemContainer>
-  );
-};
-
-export default ContentItem;

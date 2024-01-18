@@ -3,6 +3,29 @@ import styled from "styled-components";
 import { Logo } from "../common/Logo";
 import { useNavigate } from "react-router-dom";
 
+const HomePage = () => {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/order");
+  };
+
+  return (
+    <Container>
+      <div>
+        <Logo width={150} />
+      </div>
+      <div>
+        <div className="gotoOrder" onClick={onClick}>
+          주문하러 가기
+        </div>
+      </div>
+    </Container>
+  );
+};
+
+export default HomePage;
+
 const Container = styled.div`
   background: #000;
   height: 100%;
@@ -37,25 +60,3 @@ const Container = styled.div`
     }
   }
 `;
-const HomePage = () => {
-  const navigate = useNavigate();
-
-  const onClick = () => {
-    navigate("/order");
-  };
-
-  return (
-    <Container>
-      <div>
-        <Logo width={150} />
-      </div>
-      <div>
-        <div className="gotoOrder" onClick={onClick}>
-          주문하러 가기
-        </div>
-      </div>
-    </Container>
-  );
-};
-
-export default HomePage;

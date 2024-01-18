@@ -4,21 +4,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ContentItem from "./ContentItem";
 
-const FlexList = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 18px 24.5px;
-  gap: 18px;
-  width: 100%;
-  justify-content: center;
-  box-sizing: border-box;
-
-  & > .loadingBox {
-    color: #000;
-    text-align: center;
-  }
-`;
 const ContentList = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState();
@@ -60,3 +45,19 @@ const ContentList = () => {
 };
 
 export default ContentList;
+
+const FlexList = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 24.5px;
+  gap: 18px;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+
+  & > .loadingBox {
+    color: #000;
+    text-align: center;
+  }
+`;

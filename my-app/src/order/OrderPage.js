@@ -7,26 +7,6 @@ import { useEffect } from "react";
 import { initialized } from "../module/order";
 import { useDispatch } from "react-redux";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  justify-content: space-between;
-
-  & > .upper {
-    width: 100%;
-    height: 57px;
-    background-color: #000;
-    box-sizing: border-box;
-    padding: 12.5px;
-  }
-
-  & > .content {
-    width: 100%;
-    height: calc(100vh - 57px - 170px); // 전체 화면 - 상단 - 하단
-    overflow-y: scroll;
-  }
-`;
 const OrderPage = () => {
   const dispatch = useDispatch();
 
@@ -49,3 +29,24 @@ const OrderPage = () => {
 };
 
 export default OrderPage;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: space-between;
+
+  & > .upper {
+    width: 100%;
+    height: 57px;
+    background-color: #000;
+    box-sizing: border-box;
+    padding: 12.5px;
+  }
+
+  & > .content {
+    width: 100%;
+    height: calc(100vh - 57px - 170px); // 전체 화면 - 상단 - 하단
+    overflow-y: scroll;
+  }
+`;

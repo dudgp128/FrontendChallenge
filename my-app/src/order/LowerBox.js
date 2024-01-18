@@ -5,6 +5,48 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { simulateOrder } from "./simulateOrder";
 
+const LowerBox = () => {
+  const [text, setText] = useState("주문하기");
+  const totalCount = useSelector((state) => state.order.totalCount);
+  const totalPrice = useSelector((state) => state.order.totalPrice);
+
+  const navigate = useNavigate();
+
+  const onClick = async (e) => {
+    setText("로딩중...");
+    e.target.className = "buttonBox";
+
+    // 주문하기
+    try {
+      await simulateOrder();
+      navigate("/complete");
+    } catch (error) {
+      navigate("/error");
+    }
+  };
+
+  // 버튼이 비활성화(disabled)인 경우
+  const isButtonDisabled = text === "로딩중..." || totalCount === 0;
+
+  return (
+    <Wrapper>
+      <div className="textBox">
+        <div> 총 수량 : {totalCount}개</div>
+        <div> 총 가격 : {totalPrice.toLocaleString("en-US")}원 </div>
+      </div>
+      <button
+        className={`buttonBox${totalCount ? " active" : ""}`}
+        onClick={onClick}
+        disabled={isButtonDisabled}
+      >
+        <div>{text}</div>
+      </button>
+    </Wrapper>
+  );
+};
+
+export default LowerBox;
+
 const Wrapper = styled.div`
   width: 100%;
   height: 170px;
@@ -47,44 +89,3 @@ const Wrapper = styled.div`
     }
   }
 `;
-
-const LowerBox = () => {
-  const [text, setText] = useState("주문하기");
-  const totalCount = useSelector((state) => state.order.totalCount);
-  const totalPrice = useSelector((state) => state.order.totalPrice);
-
-  const navigate = useNavigate();
-
-  const onClick = async (e) => {
-    setText("로딩중...");
-    e.target.className = "buttonBox";
-
-    // 주문하기
-    try {
-      await simulateOrder();
-      navigate("/complete");
-    } catch (error) {
-      navigate("/error");
-    }
-  };
-
-  const isButtonDisabled = text === "로딩중..." || totalCount === 0;
-
-  return (
-    <Wrapper>
-      <div className="textBox">
-        <div> 총 수량 : {totalCount}개</div>
-        <div> 총 가격 : {totalPrice.toLocaleString("en-US")}원 </div>
-      </div>
-      <button
-        className={`buttonBox${totalCount ? " active" : ""}`}
-        onClick={onClick}
-        disabled={isButtonDisabled}
-      >
-        <div>{text}</div>
-      </button>
-    </Wrapper>
-  );
-};
-
-export default LowerBox;

@@ -1,6 +1,19 @@
 // OrderPage 상단바
 import styled from "styled-components";
 
+export const Title = ({ name, event }) => {
+  return (
+    <TitleBox>
+      <div> {name} </div>
+      {event ? (
+        <div className="eventBox">
+          <span>이벤트</span>
+        </div>
+      ) : null}
+    </TitleBox>
+  );
+};
+
 const TitleBox = styled.div`
   & > div {
     white-space: pre;
@@ -21,16 +34,3 @@ const TitleBox = styled.div`
     }
   }
 `;
-
-export const Title = ({ name, event }) => {
-  return (
-    <TitleBox>
-      <div> {name} </div>
-      {event ? (
-        <div className="eventBox">
-          <span>이벤트</span>
-        </div>
-      ) : null}
-    </TitleBox>
-  );
-};
